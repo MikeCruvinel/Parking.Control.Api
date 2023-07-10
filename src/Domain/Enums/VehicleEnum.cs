@@ -2,8 +2,8 @@
 {
     public enum VehicleType
     {
-        Motorbike,
-        Car,
-        Van
+        Motorbike = 1,
+        Car = 2,
+        Van = 3
     }
 }

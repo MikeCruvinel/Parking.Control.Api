@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Parking.Control.Domain.Commands.Park;
+using Parking.Control.Domain.Commands.Park.PostPark;
 
 namespace Parking.Control.Api.Controllers
 {

@@ -10,6 +10,6 @@ namespace Parking.Control.Domain.Entities
         public string Model { get; set; }
         public string LicensePlate { get; set; }
         public VehicleType VehicleType { get; set; }
-        public SpaceType SpaceTypeId { get; set; }
+        public SpaceType ParkingSpaceId { get; set; }
     }
 }

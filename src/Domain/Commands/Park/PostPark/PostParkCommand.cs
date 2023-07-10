@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Parking.Control.Domain.Enums;
 
-namespace Parking.Control.Domain.Commands.Park
+namespace Parking.Control.Domain.Commands.Park.PostPark
 {
     public class PostParkCommand : IRequest<PostParkCommandResponse>
     {

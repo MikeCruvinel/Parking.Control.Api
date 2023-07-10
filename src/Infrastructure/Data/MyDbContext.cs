@@ -8,12 +8,12 @@ namespace Parking.Control.Infrastructure.Data
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
 
         public DbSet<ParkingEntity> Parking { get; set; }
-        public DbSet<ParkingSpacesCount> ParkingSpacesCount { get; set; }
+        public DbSet<ParkingSpaceEntity> ParkingSpaces { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ParkingEntity>().ToTable("Parking");
-            modelBuilder.Entity<ParkingSpacesCount>().ToTable("ParkingSpaces").HasNoKey() ;
+            modelBuilder.Entity<ParkingSpaceEntity>().ToTable("ParkingSpaces").HasNoKey() ;
         }
     }
 }

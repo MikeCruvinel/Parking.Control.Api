@@ -24,6 +24,7 @@ namespace Parking.Control.Api
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
             services.AddScoped<IParkingRepository, ParkingRepository>();
+            services.AddScoped<IParkingSpaceRepository, ParkingSpaceRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.RegisterRequestHandlers();
             services.AddDbContext<MyDbContext>(options =>

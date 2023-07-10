@@ -2,8 +2,8 @@
 {
     public enum SpaceType
     {
-        Motorbike,
-        Car,
-        Large
+        Motorbike = 1,
+        Car = 2,
+        Large = 3
     }
 }
