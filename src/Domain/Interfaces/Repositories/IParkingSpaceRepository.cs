@@ -1,7 +1,11 @@
-﻿namespace Parking.Control.Domain.Interfaces.Repositories
+﻿using Parking.Control.Domain.Entities;
+
+namespace Parking.Control.Domain.Interfaces.Repositories
 {
     public interface IParkingSpaceRepository
     {
-        Task<int> FindBySpaceId(int Id);
+        Task<List<ParkingSpace>> GetAvailableSpacesAsync();
+        Task ParkVehicleInSpacesAsync(List<ParkingSpace> parkingSpaces, Vehicle vehicle);
+        Task RemoveParkedVehiclesAsync(List<ParkingSpace> parkingSpaces);
     }
 }

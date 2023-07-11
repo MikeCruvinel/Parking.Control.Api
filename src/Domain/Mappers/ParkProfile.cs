@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Parking.Control.Domain.Commands.Park.PostPark;
+using Parking.Control.Domain.Commands.Park.ParkVehicle;
 using Parking.Control.Domain.Entities;
 
 namespace Parking.Control.Domain.Mappers
@@ -8,9 +8,9 @@ namespace Parking.Control.Domain.Mappers
     {
         public ParkProfile()
         {
-            CreateMap<PostParkCommand, ParkingEntity>(MemberList.None)
-                .ForMember(dest => dest.Id, opt => opt.Ignore());
-            CreateMap<ParkingEntity, PostParkCommandResponse>(MemberList.None);
+            CreateMap<ParkVehicleCommand, Vehicle>()
+                .ForMember(src => src.Id, opt => opt.Ignore());
+            CreateMap<Vehicle, ParkVehicleCommandResponse>();
         }
     }
 }

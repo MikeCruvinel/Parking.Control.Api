@@ -1,12 +1,6 @@
-﻿using AutoMapper;
-using AutoMapper.Internal;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Parking.Control.Domain.Interfaces.Repositories;
-using Parking.Control.Domain.Mappers;
 using Parking.Control.Infrastructure.Data;
-using Parking.Control.Infrastructure.Data.Repositories;
 
 namespace Parking.Control.Api
 {
@@ -23,13 +17,11 @@ namespace Parking.Control.Api
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
-            services.AddScoped<IParkingRepository, ParkingRepository>();
-            services.AddScoped<IParkingSpaceRepository, ParkingSpaceRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.RegisterRequestHandlers();
-            services.AddDbContext<MyDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddAutoMapper(cfg => cfg.Internal().MethodMappingEnabled = false, typeof(ParkProfile).Assembly);
+            services.RegisterMappers();
+            services.RegisterInterfaces();
+            services.AddDbContext<MyDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment environment)
@@ -41,9 +33,7 @@ namespace Parking.Control.Api
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
             app.MapControllers();
         }
     }
