@@ -17,7 +17,7 @@ namespace Parking.Control.Api.Controllers
         public ParkingSpacesController(IMediator mediator) => _mediator = mediator;
 
         [HttpPost]
-        public async Task<IActionResult> CreateParkingSpaceAsync(CreateParkingSpaceCommand command)
+        public async Task<IActionResult> CreateAsync(CreateParkingSpaceCommand command)
         {
             try
             {
@@ -32,7 +32,7 @@ namespace Parking.Control.Api.Controllers
 
         [Route("availability")]
         [HttpGet]
-        public async Task<IActionResult> GetAvailableSpacesAsync()
+        public async Task<IActionResult> GetAvailableAsync()
         {
             try
             {
@@ -47,7 +47,7 @@ namespace Parking.Control.Api.Controllers
 
         [Route("quantity")]
         [HttpGet]
-        public async Task<IActionResult> GetQuantitySpacesAsync()
+        public async Task<IActionResult> GetQuantityAsync()
         {
             try
             {
@@ -62,7 +62,7 @@ namespace Parking.Control.Api.Controllers
 
         [Route("quantity/{type}")]
         [HttpGet]
-        public async Task<IActionResult> GetQuantitySpacesByTypeAsync(SpaceType type)
+        public async Task<IActionResult> GetQuantityByTypeAsync(SpaceType type)
         {
             try
             {

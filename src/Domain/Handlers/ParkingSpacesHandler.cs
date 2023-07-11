@@ -13,7 +13,7 @@ namespace Parking.Control.Domain.Handlers
         IRequestHandler<GetAvailableSpacesQuery, GetAvailableSpacesQueryResponse>,
         IRequestHandler<GetQuantitySpacesQuery, GetQuantitySpacesQueryResponse>,
         IRequestHandler<GetAvailableSpacesByTypeQuery, GetAvailableSpacesByTypeQueryResponse>,
-        IRequestHandler<CreateParkingSpaceCommandResponse, CreateParkingSpaceCommandResponse>
+        IRequestHandler<CreateParkingSpaceCommand, CreateParkingSpaceCommandResponse>
     {
         private readonly IParkingSpaceRepository _parkingSpaceRepository;
         private readonly IMapper _mapper;

@@ -13,7 +13,7 @@ namespace Parking.Control.Infrastructure.Data.Repositories
         public async Task<ParkingSpace> CreateParkingSpaceAsync(ParkingSpace parkingSpace)
         {
             var response = await _context.ParkingSpaces.AddAsync(parkingSpace);
-
+            await _context.SaveChangesAsync();
             return response.Entity;
         }
 
