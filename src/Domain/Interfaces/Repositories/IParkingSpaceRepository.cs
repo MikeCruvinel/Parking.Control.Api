@@ -8,5 +8,6 @@ namespace Parking.Control.Domain.Interfaces.Repositories
         Task ParkVehicleAsync(List<ParkingSpace> parkingSpaces, Vehicle vehicle);
         Task RemoveParkedVehiclesAsync(List<ParkingSpace> parkingSpaces);
         Task<int> GetQuantitySpacesAsync();
+        Task<ParkingSpace> CreateParkingSpaceAsync(ParkingSpace parkingSpace);
     }
 }

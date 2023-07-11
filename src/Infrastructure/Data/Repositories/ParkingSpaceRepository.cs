@@ -10,6 +10,13 @@ namespace Parking.Control.Infrastructure.Data.Repositories
 
         public ParkingSpaceRepository(MyDbContext context) => _context = context;
 
+        public async Task<ParkingSpace> CreateParkingSpaceAsync(ParkingSpace parkingSpace)
+        {
+            var response = await _context.ParkingSpaces.AddAsync(parkingSpace);
+
+            return response.Entity;
+        }
+
         public async Task<List<ParkingSpace>> GetAvailableSpacesAsync()
         {
             return await _context.ParkingSpaces.Where(p => p.Available).ToListAsync();

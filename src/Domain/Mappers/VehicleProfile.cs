@@ -4,9 +4,9 @@ using Parking.Control.Domain.Entities;
 
 namespace Parking.Control.Domain.Mappers
 {
-    public class ParkProfile : Profile
+    public class VehicleProfile : Profile
     {
-        public ParkProfile()
+        public VehicleProfile()
         {
             CreateMap<ParkVehicleCommand, Vehicle>()
                 .ForMember(src => src.Id, opt => opt.Ignore());

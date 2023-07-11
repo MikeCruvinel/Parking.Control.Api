@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Parking.Control.Domain.Commands.ParkingSpaces.CreateParkingSpace;
 using Parking.Control.Domain.Enums;
 using Parking.Control.Domain.Queries.ParkingSpace.GetAvailabeSpaces;
 using Parking.Control.Domain.Queries.ParkingSpace.GetAvailableSpacesByType;
@@ -14,6 +15,20 @@ namespace Parking.Control.Api.Controllers
         private readonly IMediator _mediator;
 
         public ParkingSpacesController(IMediator mediator) => _mediator = mediator;
+
+        [HttpPost]
+        public async Task<IActionResult> CreateParkingSpaceAsync(CreateParkingSpaceCommand command)
+        {
+            try
+            {
+                var response = await _mediator.Send(command);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         [Route("availability")]
         [HttpGet]

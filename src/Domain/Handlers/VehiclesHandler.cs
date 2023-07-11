@@ -6,7 +6,7 @@ using Parking.Control.Domain.Entities;
 using Parking.Control.Domain.Enums;
 using Parking.Control.Domain.Interfaces.Repositories;
 
-namespace Parking.Control.Domain.Commands.Handlers
+namespace Parking.Control.Domain.Handlers
 {
     public class VehiclesHandler : IRequestHandler<ParkVehicleCommand, ParkVehicleCommandResponse>,
         IRequestHandler<RemoveParkedVehicleCommand, RemoveParkedVehicleCommandResponse>

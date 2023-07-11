@@ -1,21 +1,35 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
+using Parking.Control.Domain.Commands.ParkingSpaces.CreateParkingSpace;
+using Parking.Control.Domain.Entities;
 using Parking.Control.Domain.Interfaces.Repositories;
 using Parking.Control.Domain.Queries.ParkingSpace.GetAvailabeSpaces;
 using Parking.Control.Domain.Queries.ParkingSpace.GetAvailableSpacesByType;
 using Parking.Control.Domain.Queries.ParkingSpace.GetQuantitySpaces;
 
-namespace Parking.Control.Domain.Queries.Handlers
+namespace Parking.Control.Domain.Handlers
 {
-    public class SpacesHandler :
+    public class ParkingSpacesHandler :
         IRequestHandler<GetAvailableSpacesQuery, GetAvailableSpacesQueryResponse>,
         IRequestHandler<GetQuantitySpacesQuery, GetQuantitySpacesQueryResponse>,
-        IRequestHandler<GetAvailableSpacesByTypeQuery, GetAvailableSpacesByTypeQueryResponse>
+        IRequestHandler<GetAvailableSpacesByTypeQuery, GetAvailableSpacesByTypeQueryResponse>,
+        IRequestHandler<CreateParkingSpaceCommandResponse, CreateParkingSpaceCommandResponse>
     {
         private readonly IParkingSpaceRepository _parkingSpaceRepository;
+        private readonly IMapper _mapper;
 
-        public SpacesHandler(IParkingSpaceRepository parkingSpaceRepository)
+        public ParkingSpacesHandler(IParkingSpaceRepository parkingSpaceRepository, IMapper mapper)
         {
             _parkingSpaceRepository = parkingSpaceRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<CreateParkingSpaceCommandResponse> Handle(CreateParkingSpaceCommand request, CancellationToken cancellationToken)
+        {
+            var parkingSpace = _mapper.Map<ParkingSpace>(request);
+            var response = await _parkingSpaceRepository.CreateParkingSpaceAsync(parkingSpace);
+
+            return _mapper.Map<CreateParkingSpaceCommandResponse>(response);
         }
 
         public async Task<GetAvailableSpacesQueryResponse> Handle(GetAvailableSpacesQuery request, CancellationToken cancellationToken)
@@ -36,6 +50,11 @@ namespace Parking.Control.Domain.Queries.Handlers
             var totalByType = availableSpaces.Where(p => p.Type == (int)request.Type).Count();
 
             return new GetAvailableSpacesByTypeQueryResponse(totalByType);
+        }
+
+        public Task<CreateParkingSpaceCommandResponse> Handle(CreateParkingSpaceCommandResponse request, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
     }
 }

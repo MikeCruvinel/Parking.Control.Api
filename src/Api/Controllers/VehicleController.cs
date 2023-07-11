@@ -33,7 +33,7 @@ namespace Parking.Control.Api.Controllers
         {
             try
             {
-                var response = await _mediator.Send(new RemoveParkedVehicleCommand { LicensePlate = licensePlate });
+                var response = await _mediator.Send(new RemoveParkedVehicleCommand(licensePlate));
                 return Ok(response);
             }
             catch (Exception ex)
