@@ -51,10 +51,5 @@ namespace Parking.Control.Domain.Handlers
 
             return new GetAvailableSpacesByTypeQueryResponse(totalByType);
         }
-
-        public Task<CreateParkingSpaceCommandResponse> Handle(CreateParkingSpaceCommandResponse request, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
