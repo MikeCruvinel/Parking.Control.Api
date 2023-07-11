@@ -1,22 +1,21 @@
 ﻿using AutoMapper;
 using MediatR;
-using Newtonsoft.Json;
-using Parking.Control.Domain.Commands.Park.ParkVehicle;
-using Parking.Control.Domain.Commands.Park.RemoveVehicle;
+using Parking.Control.Domain.Commands.Vehicles.ParkVehicle;
+using Parking.Control.Domain.Commands.Vehicles.RemoveVehicle;
 using Parking.Control.Domain.Entities;
 using Parking.Control.Domain.Enums;
 using Parking.Control.Domain.Interfaces.Repositories;
 
 namespace Parking.Control.Domain.Commands.Handlers
 {
-    public class ParkVehicleHandler : IRequestHandler<ParkVehicleCommand, ParkVehicleCommandResponse>,
+    public class VehiclesHandler : IRequestHandler<ParkVehicleCommand, ParkVehicleCommandResponse>,
         IRequestHandler<RemoveParkedVehicleCommand, RemoveParkedVehicleCommandResponse>
     {
         private readonly IVehicleRepository _vehicleRepository;
         private readonly IParkingSpaceRepository _parkingSpaceRepository;
         private readonly IMapper _mapper;
 
-        public ParkVehicleHandler(IVehicleRepository parkingRepository, IMapper mapper, IParkingSpaceRepository parkingSpaceRepository)
+        public VehiclesHandler(IVehicleRepository parkingRepository, IMapper mapper, IParkingSpaceRepository parkingSpaceRepository)
         {
             _vehicleRepository = parkingRepository;
             _mapper = mapper;
@@ -40,7 +39,7 @@ namespace Parking.Control.Domain.Commands.Handlers
 
             var vehicle = _mapper.Map<Vehicle>(request);
             var response = await _vehicleRepository.ParkVehicleAsync(vehicle);
-            await _parkingSpaceRepository.ParkVehicleInSpacesAsync(availableSpaces, response);
+            await _parkingSpaceRepository.ParkVehicleAsync(availableSpaces, response);
 
             return _mapper.Map<ParkVehicleCommandResponse>(response);
         }

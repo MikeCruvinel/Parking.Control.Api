@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Parking.Control.Domain.Commands.Park.ParkVehicle;
+using Parking.Control.Domain.Commands.Vehicles.ParkVehicle;
 using Parking.Control.Domain.Entities;
 
 namespace Parking.Control.Domain.Mappers

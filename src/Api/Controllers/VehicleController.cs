@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Parking.Control.Domain.Commands.Park.ParkVehicle;
-using Parking.Control.Domain.Commands.Park.RemoveVehicle;
+using Parking.Control.Domain.Commands.Vehicles.ParkVehicle;
+using Parking.Control.Domain.Commands.Vehicles.RemoveVehicle;
 
 namespace Parking.Control.Api.Controllers
 {
@@ -14,7 +14,7 @@ namespace Parking.Control.Api.Controllers
         public VehicleController(IMediator mediator) => _mediator = mediator;
 
         [HttpPost]
-        public async Task<IActionResult> PostAsync(ParkVehicleCommand command)
+        public async Task<IActionResult> PostParkVehicleAsync(ParkVehicleCommand command)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace Parking.Control.Api.Controllers
 
         [Route("{licensePlate}")]
         [HttpDelete]
-        public async Task<IActionResult> RemoveAsync(string licensePlate)
+        public async Task<IActionResult> RemoveParkedVehicleAsync(string licensePlate)
         {
             try
             {

@@ -1,11 +1,9 @@
 ﻿using AutoMapper.Internal;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Parking.Control.Domain.Commands.Handlers;
 using Parking.Control.Domain.Interfaces.Repositories;
 using Parking.Control.Domain.Mappers;
-using Parking.Control.Infrastructure.Data;
+using Parking.Control.Domain.Queries.Handlers;
 using Parking.Control.Infrastructure.Data.Repositories;
 
 namespace Parking.Control.Api
@@ -14,7 +12,10 @@ namespace Parking.Control.Api
     {
         public static IServiceCollection RegisterRequestHandlers(this IServiceCollection services)
         {
-            return services.AddMediatR(typeof(Dependencies).Assembly, typeof(ParkVehicleHandler).Assembly);
+            return services.AddMediatR(
+                typeof(Dependencies).Assembly,
+                typeof(VehiclesHandler).Assembly,
+                typeof(SpacesHandler).Assembly);
         }
 
         public static IServiceCollection RegisterMappers(this IServiceCollection services)

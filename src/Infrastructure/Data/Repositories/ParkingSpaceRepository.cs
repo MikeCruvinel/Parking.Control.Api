@@ -15,7 +15,12 @@ namespace Parking.Control.Infrastructure.Data.Repositories
             return await _context.ParkingSpaces.Where(p => p.Available).ToListAsync();
         }
 
-        public async Task ParkVehicleInSpacesAsync(List<ParkingSpace> parkingSpaces, Vehicle vehicle)
+        public async Task<int> GetQuantitySpacesAsync()
+        {
+            return await _context.ParkingSpaces.CountAsync();
+        }
+
+        public async Task ParkVehicleAsync(List<ParkingSpace> parkingSpaces, Vehicle vehicle)
         {
             foreach (var parkingSpace in parkingSpaces)
             {

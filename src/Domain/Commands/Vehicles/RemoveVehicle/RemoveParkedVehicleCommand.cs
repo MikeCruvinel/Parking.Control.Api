@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Parking.Control.Domain.Commands.Park.RemoveVehicle
+namespace Parking.Control.Domain.Commands.Vehicles.RemoveVehicle
 {
     public class RemoveParkedVehicleCommand : IRequest<RemoveParkedVehicleCommandResponse>
     {
