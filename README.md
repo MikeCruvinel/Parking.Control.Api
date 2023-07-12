@@ -42,7 +42,7 @@ Para testes, poderá utilizar o bkp da base de dados disponibilizada em /assets.
 Tecnologias utilizadas:
 
 - .NET 7
-- Entity Framework
+- EntityFrameworkCore
 - Sql Server
 - MediatoR
 - AutoMapper
