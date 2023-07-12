@@ -50,7 +50,7 @@ namespace Parking.Control.Infrastructure.Data.Repositories
 
         public async Task RemoveParkedVehiclesAsync(List<ParkingSpace> parkingSpaces)
         {
-            foreach(var parkingSpace in parkingSpaces)
+            foreach (var parkingSpace in parkingSpaces)
             {
                 parkingSpace.Available = true;
                 parkingSpace.Vehicle = null;

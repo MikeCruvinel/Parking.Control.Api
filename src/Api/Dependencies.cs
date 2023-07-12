@@ -1,6 +1,5 @@
 ﻿using AutoMapper.Internal;
 using MediatR;
-using Microsoft.Extensions.DependencyInjection;
 using Parking.Control.Domain.Handlers;
 using Parking.Control.Domain.Interfaces.Repositories;
 using Parking.Control.Domain.Mappers;

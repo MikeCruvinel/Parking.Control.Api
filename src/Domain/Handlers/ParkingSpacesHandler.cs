@@ -38,7 +38,7 @@ namespace Parking.Control.Domain.Handlers
 
         public async Task<RemoveParkingSpaceCommandResponse> Handle(RemoveParkingSpaceCommand request, CancellationToken cancellationToken)
         {
-            var response = await _parkingSpaceRepository.RemoveAsync(request.Id) 
+            var response = await _parkingSpaceRepository.RemoveAsync(request.Id)
                 ?? throw new Exception("Vaga não encontrada");
 
             await _vehicleRepository.RemoveParkedVehicleAsync(response.Vehicle);

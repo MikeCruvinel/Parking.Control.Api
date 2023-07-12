@@ -1,5 +1,4 @@
 ﻿using Parking.Control.Domain.Entities;
-using Parking.Control.Domain.Enums;
 
 namespace Parking.Control.Domain.Interfaces.Repositories
 {
