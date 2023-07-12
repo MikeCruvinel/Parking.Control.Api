@@ -13,16 +13,14 @@ namespace Parking.Control.Api
         {
             return services.AddMediatR(
                 typeof(Dependencies).Assembly,
-                typeof(VehiclesHandler).Assembly,
-                typeof(ParkingSpacesHandler).Assembly);
+                typeof(VehiclesHandler).Assembly);
         }
 
         public static IServiceCollection RegisterMappers(this IServiceCollection services)
         {
             return services.AddAutoMapper(
                 cfg => cfg.Internal().MethodMappingEnabled = false,
-                typeof(VehicleProfile).Assembly,
-                typeof(ParkingSpaceProfile).Assembly);
+                typeof(VehicleProfile).Assembly);
         }
 
         public static IServiceCollection RegisterInterfaces(this IServiceCollection services)

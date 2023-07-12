@@ -24,7 +24,9 @@ namespace Parking.Control.Domain.Handlers
 
         public async Task<ParkVehicleCommandResponse> Handle(ParkVehicleCommand request, CancellationToken cancellationToken)
         {
-            if (await _vehicleRepository.CheckParkedCarAsync(request.LicensePlate))
+            var IsParkedCar = await _vehicleRepository.CheckParkedCarAsync(request.LicensePlate);
+
+            if (IsParkedCar)
                 throw new Exception("Veiculo já estacionado");
 
             var availableSpaces = await _parkingSpaceRepository.GetAvailableSpacesAsync();
