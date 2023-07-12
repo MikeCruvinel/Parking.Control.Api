@@ -10,10 +10,20 @@ namespace Parking.Control.Infrastructure.Data.Repositories
 
         public ParkingSpaceRepository(MyDbContext context) => _context = context;
 
-        public async Task<ParkingSpace> CreateParkingSpaceAsync(ParkingSpace parkingSpace)
+        public async Task<ParkingSpace> CreateAsync(ParkingSpace parkingSpace)
         {
             var response = await _context.ParkingSpaces.AddAsync(parkingSpace);
             await _context.SaveChangesAsync();
+            return response.Entity;
+        }
+
+        public async Task<ParkingSpace> RemoveAsync(int Id)
+        {
+            var parkingSpace = await _context.ParkingSpaces.Where(p => p.Id == Id).Include(p => p.Vehicle).FirstOrDefaultAsync();
+
+            var response = _context.ParkingSpaces.Remove(parkingSpace);
+            await _context.SaveChangesAsync();
+
             return response.Entity;
         }
 
@@ -22,7 +32,7 @@ namespace Parking.Control.Infrastructure.Data.Repositories
             return await _context.ParkingSpaces.Where(p => p.Available).ToListAsync();
         }
 
-        public async Task<int> GetQuantitySpacesAsync()
+        public async Task<int> GetQuantityAsync()
         {
             return await _context.ParkingSpaces.CountAsync();
         }

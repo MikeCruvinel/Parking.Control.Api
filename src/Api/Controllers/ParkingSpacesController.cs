@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Parking.Control.Domain.Commands.ParkingSpaces.CreateParkingSpace;
+using Parking.Control.Domain.Commands.ParkingSpaces.RemoveParkingSpace;
 using Parking.Control.Domain.Enums;
 using Parking.Control.Domain.Queries.ParkingSpace.GetAvailabeSpaces;
 using Parking.Control.Domain.Queries.ParkingSpace.GetAvailableSpacesByType;
@@ -22,6 +23,21 @@ namespace Parking.Control.Api.Controllers
             try
             {
                 var response = await _mediator.Send(command);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("{id}")]
+        [HttpDelete]
+        public async Task<IActionResult> RemoveAsync(int id)
+        {
+            try
+            {
+                var response = await _mediator.Send(new RemoveParkingSpaceCommand(id));
                 return Ok(response);
             }
             catch (Exception ex)
