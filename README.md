@@ -23,7 +23,7 @@ Para a solução do problema, foi utilizada duas tabelas na base de dados que co
 
 ![Alt text](assets/image.png)
 
-Basicamente, os veiculos estacionados ficaram salvos na tabela Vehicles, enquanto a tabela ParkingSpaces irá acomodar informações sobre a vaga e também o Id do veiculo estacionado. Sendo assim, possível termos uma Van ocupando 3 vagas.
+Basicamente, os veiculos estacionados ficarão salvos na tabela Vehicles, enquanto a tabela ParkingSpaces irá acomodar informações sobre a vaga e também o Id do veiculo estacionado. Sendo assim, é possível termos uma Van ocupando 3 vagas.
 
 A solução também tem priorização de vagas, priorizando a vaga relacionada ao tipo do veiculo e caso não encontre, buscará a segunda opção aceitável.
 
@@ -42,11 +42,13 @@ Para testes, poderá utilizar o bkp da base de dados disponibilizada em /assets.
 Tecnologias utilizadas:
 
 - .NET 7
+- DDD
 - EntityFrameworkCore
 - Sql Server
 - MediatoR
 - AutoMapper
-- CRQS
+- CQRS
 - XUnit
 - FluentAssertions
-- DDD
+- MOQ
+
