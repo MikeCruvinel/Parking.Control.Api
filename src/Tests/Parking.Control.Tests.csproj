@@ -30,8 +30,4 @@
 	  <ProjectReference Include="..\Domain\Parking.Control.Domain.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Domain\ParkingSpace\" />
-	</ItemGroup>
-
 </Project>
