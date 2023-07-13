@@ -35,7 +35,9 @@ Testes unitários:
 
 ![Alt text](assets/image-2.png)
 
-A Solução está estruturada em uma arquitetura orientada a dominio prezando o modelo CQRS, onde devemos sogregar as responsabilidades de leitura e escrita no banco de dados.
+A Solução está estruturada em uma arquitetura orientada a dominio prezando um modelo CQRS simplificado com apenas uma base de dados, onde devemos sogregar as responsabilidades de leitura e escrita no banco de dados.
+
+https://learn.microsoft.com/pt-br/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/apply-simplified-microservice-cqrs-ddd-patterns
 
 Para testes, poderá utilizar o bkp da base de dados disponibilizada em /assets.
 
